@@ -2,12 +2,12 @@ section .text
   global _ft_strlen
 
 _ft_strlen:
-  mov	rdx, 0
+  xor rdx, rdx
 .loop:
-  cmp	BYTE[rdi + rdx], 0
-  je	.exit
-  inc	rdx
-  jmp	.loop
+  cmp BYTE[rdi + rdx], 0
+  je  .exit
+  inc rdx
+  jmp .loop
 .exit:
-  mov	rax, rdx
+  mov rax, rdx
   ret
