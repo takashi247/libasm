@@ -1,0 +1,8 @@
+# target file
+libasm.a
+
+# object files
+*.o
+
+# executables
+a.out
