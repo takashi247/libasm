@@ -8,7 +8,8 @@ AR			:= ar
 
 ARFLAGS	:= -rc # r: replace c: create silently
 
-SRCS		:= ft_strlen.s
+SRCS		:= ft_strlen.s \
+					ft_strcpy.s
 
 OBJS		:= $(SRCS:.s=.o)
 
@@ -28,7 +29,6 @@ clean:
 .PHONY: fclean
 fclean: clean
 	rm -f $(NAME)
-	rm a.out
 
 .PHONY: re
 re: fclean all
