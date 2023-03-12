@@ -3,7 +3,6 @@ section .text
 
 _ft_strlen:
   mov	rdx, 0
-  mp	.loop
 .loop:
   cmp	BYTE[rdi + rdx], 0
   je	.exit
