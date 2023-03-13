@@ -1,8 +1,20 @@
 NAME		:= libasm.a
 
+TARGET	:= a.out
+
 NASM		:= nasm
 
 ASFLAGS	:= -f macho64
+
+CC			:= gcc
+
+CFLAGS	:= -Wall -Wextra -Werror
+
+SRCSDIR	:= srcs/
+
+OBJSDIR	:= objs/
+
+TESTDIR	:= test/
 
 AR			:= ar
 
@@ -15,7 +27,23 @@ SRCS		:= ft_strlen.s \
 					ft_read.s \
 					ft_strdup.s
 
-OBJS		:= $(SRCS:.s=.o)
+SRCS_TEST	:= main.c \
+					test_strlen.c \
+					test_strcpy.c \
+					test_strcmp.c \
+					test_write.c \
+					test_read.c \
+					test_strdup.c
+
+OBJS		:= $(addprefix $(OBJSDIR), $(SRCS:.s=.o))
+
+OBJS_TEST		:= $(addprefix $(OBJSDIR), $(SRCS_TEST:.c=.o))
+
+VPATH		:= $(SRCSDIR):$(TESTDIR) # set the paths for make to search source files
+
+INCLUDE	:= -I./include
+
+RM			:= rm -rf
 
 .PHONY: all
 all: $(NAME)
@@ -23,16 +51,28 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $@ $^
 
-.s.o:
+$(OBJSDIR)%.o: %.s
+	@if [ ! -d $(OBJSDIR) ]; then mkdir $(OBJSDIR); fi
 	$(NASM) $(ASFLAGS) $^ -o $@
+
+.PHONY: test
+test: $(TARGET)
+
+$(TARGET): $(OBJS_TEST) $(NAME)
+	$(CC) $(CFLAGS) $(INCLUDE) $^ -o $@
+
+$(OBJSDIR)%.o: %.c
+	@if [ ! -d $(OBJSDIR) ]; then mkdir $(OBJSDIR); fi
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 .PHONY: clean
 clean:
-	rm -f $(OBJS)
+	$(RM) $(OBJSDIR)
 
 .PHONY: fclean
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
+	$(RM) $(TARGET)
 
 .PHONY: re
 re: fclean all
