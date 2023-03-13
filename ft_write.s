@@ -4,7 +4,7 @@ section .text
 
 ; rdi = file descripter
 ; rsi = pointer to buffer
-; rdx = max. number of bytes to be read
+; rdx = max. number of bytes to be written
 
 _ft_write:
   mov rax, 0x2000004; syscall number for write in MacOS

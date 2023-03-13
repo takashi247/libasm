@@ -2,9 +2,61 @@
 #include <string.h>
 #include <unistd.h>
 #include <errno.h>
+#include <fcntl.h>
 #include "libasm.h"
 
 extern int errno;
+
+void
+	test_read_error()
+{
+	char buf[BUFSIZ];
+
+	printf("read(-1, buf, 1):\n");
+	read(-1, buf, 1);
+	printf("\n%s\n", strerror(errno));
+	printf("ft_read(-1, buf, 1):\n");
+	ft_read(-1, buf, 1);
+	printf("\n%s\n", strerror(errno));
+
+	printf("read(1, buf, -1):\n");
+	read(1, buf, -1);
+	printf("\n%s\n", strerror(errno));
+	printf("ft_read(1, buf, -1):\n");
+	ft_read(1, buf, -1);
+	printf("\n%s\n", strerror(errno));
+}
+
+void
+	test_read()
+{
+	char buf[BUFSIZ];
+	int fildes;
+
+	bzero(buf, BUFSIZ);
+	fildes = open("Makefile", O_RDONLY);
+	printf("read:\n");
+	const ssize_t res_libc = read(fildes, buf, 100);
+	printf("buf:\n%s\n", buf);
+	printf("returned value: %zd\n", res_libc);
+	close(fildes);
+
+	bzero(buf, BUFSIZ);
+	fildes = open("Makefile", O_RDONLY);
+	printf("ft_read:\n");
+	const ssize_t res_ft = ft_read(fildes, buf, 100);
+	printf("buf:\n%s\n", buf);
+	printf("returned value: %zd\n", res_ft);
+	close(fildes);
+
+	if (res_libc == res_ft) {
+		printf("result:\t%s", GREEN);
+		printf("%s%s\n", "OK!", DEFAULT);
+	} else {
+		printf("result:\t%s", RED);
+		printf("%s%s\n", "NG!", DEFAULT);
+	}
+}
 
 void
 	test_write_error()
@@ -30,9 +82,11 @@ void
 	printf("str = %s:\n", str);
 	printf("write:\n");
 	const ssize_t res_libc = write(fildes, str, strlen(str));
+	// const ssize_t res_libc = write(fildes, str, 100);
 	printf("\nreturned value: %zd\n", res_libc);
 	printf("ft_write:\n");
 	const ssize_t res_ft = ft_write(fildes, str, strlen(str));
+	// const ssize_t res_ft = ft_write(fildes, str, 100);
 	printf("\nreturned value: %zd\n", res_ft);
 	if (res_libc == res_ft) {
 		printf("result:\t%s", GREEN);
@@ -125,5 +179,9 @@ int
 	test_write(STDOUT_FILENO, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 	printf("%s***ft_write error test***\n%s", BLUE, DEFAULT);
 	test_write_error();
+	printf("%s***ft_read test***\n%s", BLUE, DEFAULT);
+	test_read();
+	printf("%s***ft_read error test***\n%s", BLUE, DEFAULT);
+	test_read_error();
 	return (0);
 }
