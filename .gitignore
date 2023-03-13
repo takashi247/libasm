@@ -6,3 +6,6 @@ libasm.a
 
 # executables
 a.out
+
+# config
+.vscode
