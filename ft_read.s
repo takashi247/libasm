@@ -7,10 +7,10 @@ section .text
 _ft_read:
   mov rax, 0x2000003; syscall number for read in MacOS
   syscall
-  jc error
+  jc .error
   ret
 
-error:
+.error:
   mov rdi, rax
   call ___error
   mov [rax], rdi
