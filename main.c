@@ -8,6 +8,30 @@
 extern int errno;
 
 void
+	test_strdup(const char *str)
+{
+	char	*cpy_libc;
+	char	*cpy_ft;
+
+	printf("str = %s:\n", str);
+	cpy_libc = strdup(str);
+	printf("strdup:\t\t%s\n", cpy_libc);
+	cpy_ft = ft_strdup(str);
+	printf("ft_strdup:\t%s\n", cpy_ft);
+	if (!strcmp(cpy_libc, cpy_ft)) {
+		printf("result:\t%s", GREEN);
+		printf("%s%s\n", "OK!", DEFAULT);
+	} else {
+		printf("result:\t%s", RED);
+		printf("%s%s\n", "NG!", DEFAULT);
+	}
+	free(cpy_libc);
+	cpy_libc = NULL;
+	free(cpy_ft);
+	cpy_ft = NULL;
+}
+
+void
 	test_read_error()
 {
 	char buf[BUFSIZ];
@@ -159,17 +183,19 @@ int
 	test_strlen("hoge");
 	test_strlen("");
 	test_strlen("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
 	printf("%s***ft_strcpy test***\n%s", BLUE, DEFAULT);
 	test_strcpy("42");
 	test_strcpy("hoge");
 	test_strcpy("");
 	test_strcpy("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-	test_strcpy("42");
+
 	printf("%s***ft_strcmp test***\n%s", BLUE, DEFAULT);
 	test_strcmp("42", "42");
 	test_strcmp("hoge", "hoga");
 	test_strcmp("", " ");
 	test_strcmp("fuga", "fugaaaaaaaaaaaaaaaa");
+
 	printf("%s***ft_write test***\n%s", BLUE, DEFAULT);
 	test_write(STDOUT_FILENO, "42");
 	test_write(STDOUT_FILENO, "hoge");
@@ -177,11 +203,26 @@ int
 	test_write(STDOUT_FILENO, "123456789");
 	test_write(STDOUT_FILENO, "0123456789");
 	test_write(STDOUT_FILENO, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
 	printf("%s***ft_write error test***\n%s", BLUE, DEFAULT);
 	test_write_error();
+
 	printf("%s***ft_read test***\n%s", BLUE, DEFAULT);
 	test_read();
+
 	printf("%s***ft_read error test***\n%s", BLUE, DEFAULT);
 	test_read_error();
+
+	printf("%s***ft_strdup test***\n%s", BLUE, DEFAULT);
+	test_strdup("42");
+	test_strdup("hoge");
+	test_strdup("");
+	test_strdup("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
 	return (0);
 }
+
+// __attribute__((destructor))
+// static void destructor() {
+//     system("leaks -q a.out");
+// }
