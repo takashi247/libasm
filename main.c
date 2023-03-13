@@ -3,7 +3,24 @@
 #include "libasm.h"
 
 void
-	test_strcpy(const char* str)
+	test_strcmp(const char *s1, const char *s2)
+{
+	printf("s1 = %s, s2 = %s:\n", s1, s2);
+	const int res_libc = strcmp(s1, s2);
+	printf("strcmp:\t\t%d\n", res_libc);
+	const int res_ft = ft_strcmp(s1, s2);
+	printf("ft_strcmp:\t%d\n", res_ft);
+	if (res_libc == res_ft) {
+		printf("result:\t%s", GREEN);
+		printf("%s%s\n", "OK!", DEFAULT);
+	} else {
+		printf("result:\t%s", RED);
+		printf("%s%s\n", "NG!", DEFAULT);
+	}
+}
+
+void
+	test_strcpy(const char *str)
 {
 	char	dest_libc[100];
 	char	dest_ft[100];
@@ -52,5 +69,9 @@ int
 	test_strcpy("hoge");
 	test_strcpy("");
 	test_strcpy("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+	test_strcmp("42", "42");
+	test_strcmp("hoge", "hoga");
+	test_strcmp("", " ");
+	test_strcmp("fuga", "fugaaaaaaaaaaaaaaaa");
 	return (0);
 }

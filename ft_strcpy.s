@@ -11,6 +11,6 @@ _ft_strcpy:
   inc rcx; increment rcx to loop properly until null
   mov rdi, r11; restore the original dest
   mov rax, rdi; set dest as the returned value from strcpy
-  cld; clear direction
+  cld; clear direction (=rcx will be decreased while rep)
   rep movsb; loop until rcx become zero
   ret
