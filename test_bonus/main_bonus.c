@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnishina <tnishina@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:38:56 by tnishina          #+#    #+#             */
-/*   Updated: 2023/03/14 18:33:21 by tnishina         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:39:34 by tnishina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libasm.h"
+#include "libasm_bonus.h"
 
 int
 	main(void)
 {
-	run_strlen_tests();
-	run_strcpy_tests();
-	run_strcmp_tests();
-	run_write_tests();
-	run_read_tests();
-	run_strdup_tests();
+	run_atoi_base_tests();
 	return (0);
 }
 

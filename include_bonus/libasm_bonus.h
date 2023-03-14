@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libasm.h                                           :+:      :+:    :+:   */
+/*   libasm_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnishina <tnishina@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/12 09:01:40 by tnishina          #+#    #+#             */
-/*   Updated: 2023/03/14 18:11:59 by tnishina         ###   ########.fr       */
+/*   Created: 2023/03/14 18:07:17 by tnishina          #+#    #+#             */
+/*   Updated: 2023/03/14 18:14:36 by tnishina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBASM_H
-# define LIBASM_H
+#ifndef LIBASM_BONUS_H
+# define LIBASM_BONUS_H
 
 /* color codes for printf */
 # define RED "\033[0;31m"
@@ -29,19 +29,13 @@
 /* mandatory part */
 
 size_t	ft_strlen(const char *s);
-char	*ft_strcpy(char *dest, const char *src);
-int		ft_strcmp(const char *s1, const char *s2);
-ssize_t	ft_write(int fildes, const void *buf, size_t nbyte);
-ssize_t	ft_read(int fildes, void *buf, size_t nbyte);
 char	*ft_strdup(const char *s1);
+
+/* bonus part */
+int		ft_atoi_base(char *str, char *base);
 
 /* test functions */
 
-void	run_strlen_tests(void);
-void	run_strcpy_tests(void);
-void	run_strcmp_tests(void);
-void	run_write_tests(void);
-void	run_read_tests(void);
-void	run_strdup_tests(void);
+void	run_atoi_base_tests(void);
 
 #endif
