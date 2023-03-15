@@ -24,9 +24,8 @@ _ft_atoi_base:
 
   ; check if base contains '+'. '-', or white spaces
   xor rdx, rdx
-  mov r10, rdi
-  xor rdi, rdi
-  jmp .loop_sp
+  mov r10, rdi; copy rdi to r10
+  xor rdi, rdi; reset rdi to use this register for ft_isspace
 
 .loop_sp:
   mov dil, BYTE [r10 + rdx]
