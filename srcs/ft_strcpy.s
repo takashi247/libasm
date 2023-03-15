@@ -1,7 +1,6 @@
-EXTERN  _ft_strlen
-
 section .text
   global _ft_strcpy; char *ft_strcpy(char *dest, const char *src)
+  extern _ft_strlen
 
 _ft_strcpy:
   push rdi; store rdi (=dest) in r11 temporarily

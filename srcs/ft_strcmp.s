@@ -1,7 +1,6 @@
-EXTERN  _ft_strlen
-
 section .text
   global _ft_strcmp; int strcmp(const char *s1, const char *s2)
+  extern _ft_strlen
 
 _ft_strcmp:
   call _ft_strlen; call strlen to get the length of s1

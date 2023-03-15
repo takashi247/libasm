@@ -6,7 +6,7 @@
 /*   By: tnishina <tnishina@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 17:48:43 by tnishina          #+#    #+#             */
-/*   Updated: 2023/03/14 18:40:24 by tnishina         ###   ########.fr       */
+/*   Updated: 2023/03/15 22:29:01 by tnishina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 static void
 	test_atoi_base(char *str, char *base)
 {
+	int	res;
+
 	printf("str = %s, base = %s:\n", str, base);
-	printf("ft_atoi_base: %d\n", ft_atoi_base(str, base));
+	res = ft_atoi_base(str, base);
+	printf("ft_atoi_base: %d\n", res);
 }
 
 void

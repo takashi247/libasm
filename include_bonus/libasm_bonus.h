@@ -6,7 +6,7 @@
 /*   By: tnishina <tnishina@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:07:17 by tnishina          #+#    #+#             */
-/*   Updated: 2023/03/14 18:14:36 by tnishina         ###   ########.fr       */
+/*   Updated: 2023/03/15 19:54:13 by tnishina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ char	*ft_strdup(const char *s1);
 
 /* bonus part */
 int		ft_atoi_base(char *str, char *base);
+char	*ft_strchr(const char *s, int c);
 
 /* test functions */
 
+void	run_strchr_tests(void);
 void	run_atoi_base_tests(void);
 
 #endif

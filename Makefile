@@ -33,7 +33,9 @@ SRCS		:= ft_strlen.s \
 					ft_read.s \
 					ft_strdup.s
 
-SRCS_BONUS	:= ft_atoi_base.s
+SRCS_BONUS	:= ft_atoi_base.s \
+							ft_strchr.s \
+							ft_strlen.s
 
 SRCS_TEST	:= main.c \
 						test_strlen.c \
@@ -44,7 +46,8 @@ SRCS_TEST	:= main.c \
 						test_strdup.c \
 
 SRCS_TEST_BONUS	:= main_bonus.c \
-									test_atoi_base_bonus.c
+									test_atoi_base_bonus.c \
+									test_strchr_bonus.c
 
 OBJS		:= $(addprefix $(OBJSDIR), $(SRCS:.s=.o))
 
