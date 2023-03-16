@@ -6,7 +6,7 @@
 /*   By: tnishina <tnishina@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 17:48:43 by tnishina          #+#    #+#             */
-/*   Updated: 2023/03/16 00:54:29 by tnishina         ###   ########.fr       */
+/*   Updated: 2023/03/17 00:04:56 by tnishina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,6 @@ void
 	test_atoi_base("42", "1234-5");
 	test_atoi_base("42", "1234 5");
 	test_atoi_base("42", "12345\t");
+	test_atoi_base("     +42", "hoge");
+	test_atoi_base("     -42", "hoge");
 }
