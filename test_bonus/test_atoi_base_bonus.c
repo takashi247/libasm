@@ -6,7 +6,7 @@
 /*   By: tnishina <tnishina@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 17:48:43 by tnishina          #+#    #+#             */
-/*   Updated: 2023/03/17 00:04:56 by tnishina         ###   ########.fr       */
+/*   Updated: 2023/03/17 01:20:08 by tnishina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ void
 {
 	printf("%s***ft_atoi_base test***\n%s", BLUE, DEFAULT);
 	test_atoi_base("42", "0123456789");
+	test_atoi_base("100", "0123456789");
+	test_atoi_base("42", "0123456789abcdef");
+	test_atoi_base("2b", "0123456789abcdef");
+	test_atoi_base("ff", "0123456789abcdef");
+	test_atoi_base("fz", "0123456789abcdef");
+	test_atoi_base("zf", "0123456789abcdef");
 	test_atoi_base("42", "hoge");
 	test_atoi_base("42", "");
 	test_atoi_base("42", "fugaaaaaa");
@@ -37,4 +43,6 @@ void
 	test_atoi_base("42", "12345\t");
 	test_atoi_base("     +42", "hoge");
 	test_atoi_base("     -42", "hoge");
+	test_atoi_base("     +42", "01234");
+	test_atoi_base("     -42", "01234");
 }

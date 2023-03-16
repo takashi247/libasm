@@ -35,6 +35,7 @@ SRCS		:= ft_strlen.s \
 
 SRCS_BONUS	:= ft_atoi_base.s \
 							ft_strchr.s \
+							ft_strchr_index.s \
 							ft_strlen.s \
 							ft_isspace.s
 

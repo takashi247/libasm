@@ -2,6 +2,7 @@ section .text
   global _ft_atoi_base; int ft_atoi_base(char *str, char *base)
   extern _ft_strlen
   extern _ft_strchr
+  extern _ft_strchr_index
   extern _ft_isspace
 
 ; rdi = pointer to the string to be converted
@@ -60,17 +61,19 @@ _ft_atoi_base:
   xor rax, rax
   ret
 
-; r11: sign flag
 
 .no_dup:
   xor rax, rax; reset rax
   xor rdi, rdi; reset rdi
-  mov rsi, r10
+  xor r11, r11; reset r11 to store number
+  mov rcx, 1; initiate sign variable (rcx) with 1
   xor rdx, rdx
-  mov r11, 1
 
 ; r8: original 1st arg
 ; r9: len of 2nd arg
+; r10: original 2nd arg
+; r11: final output number
+; rcx: sign variable
 
 .loop_space:
   mov dil, BYTE [r8 + rdx]
@@ -85,17 +88,37 @@ _ft_atoi_base:
   je  .has_plus
   cmp dil, 0x2d; '-'
   je  .has_minus
-  jmp .loop_numbers
+  jmp .compute_value
 
 .has_plus:
   inc rdx
-  jmp .loop_numbers
+  jmp .compute_value
 
 .has_minus:
-  mov r11, -1
+  mov rcx, -1
+  inc rdx
+  jmp .compute_value
+
+.compute_value:
+  xor rdi, rdi
+  mov rdi, r10
+  xor rsi, rsi; reset rsi
+
+.loop_numbers:
+  mov sil, BYTE [r8 + rdx]
+  cmp rsi, 0
+  je .exit
+  push rdx; need to temporarily store rdx in stack as rdx will be used in ft_strchr_index
+  call _ft_strchr_index
+  pop rdx; restore rdx
+  cmp rax, r9
+  je  .exit
+  imul r11, r9
+  add r11, rax
   inc rdx
   jmp .loop_numbers
 
-.loop_numbers:
+.exit:
+  imul r11, rcx
   mov rax, r11
   ret

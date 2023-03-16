@@ -6,7 +6,7 @@
 /*   By: tnishina <tnishina@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:07:17 by tnishina          #+#    #+#             */
-/*   Updated: 2023/03/16 00:55:46 by tnishina         ###   ########.fr       */
+/*   Updated: 2023/03/17 00:17:45 by tnishina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ char	*ft_strdup(const char *s1);
 /* bonus part */
 int		ft_atoi_base(char *str, char *base);
 char	*ft_strchr(const char *s, int c);
+int		ft_strchr_index(const char *s, int c);
 int		ft_isspace(int c);
 
 /* test functions */
