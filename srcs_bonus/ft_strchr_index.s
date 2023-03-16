@@ -2,6 +2,7 @@ section .text
   global _ft_strchr_index; int strchr(const char *s, int c)
 
 _ft_strchr_index:
+  push rdx; temporarily store rdx in stack
   xor rdx, rdx
 
 .loop:
@@ -14,4 +15,5 @@ _ft_strchr_index:
 
 .exit:
   mov rax, rdx
+  pop rdx; restore rdx before returning to caller function
   ret

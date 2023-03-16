@@ -108,9 +108,7 @@ _ft_atoi_base:
   mov sil, BYTE [r8 + rdx]
   cmp rsi, 0
   je .exit
-  push rdx; need to temporarily store rdx in stack as rdx will be used in ft_strchr_index
   call _ft_strchr_index
-  pop rdx; restore rdx
   cmp rax, r9
   je  .exit
   imul r11, r9

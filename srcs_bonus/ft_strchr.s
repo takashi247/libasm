@@ -2,6 +2,7 @@ section .text
   global _ft_strchr; char *strchr(const char *s, int c)
 
 _ft_strchr:
+  push rdx; temporarily store rdx in stack
   xor rdx, rdx
 
 .loop:
@@ -14,9 +15,11 @@ _ft_strchr:
 
 .exit:
   xor rax, rax
+  pop rdx; restore rdx before returning to caller function
   ret
 
 .found:
   add rdi, rdx
   mov rax, rdi
+  pop rdx; restore rdx before returning to caller function
   ret

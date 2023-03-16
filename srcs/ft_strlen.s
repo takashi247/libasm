@@ -2,6 +2,7 @@ section .text
   global _ft_strlen; size_t strlen(const char *s)
 
 _ft_strlen:
+  push rdx; keep current rdx in stack
   xor rdx, rdx; i = 0
 
 .loop:
@@ -12,4 +13,5 @@ _ft_strlen:
 
 .exit:
   mov rax, rdx; rax = rdx
+  pop rdx; restore original rdx from stack
   ret
