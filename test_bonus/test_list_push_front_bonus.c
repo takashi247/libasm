@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_list_push_front.c                             :+:      :+:    :+:   */
+/*   test_list_push_front_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnishina <tnishina@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 23:26:44 by tnishina          #+#    #+#             */
-/*   Updated: 2023/03/17 23:36:44 by tnishina         ###   ########.fr       */
+/*   Updated: 2023/03/18 00:48:20 by tnishina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static void
 void
 	run_list_push_front_tests(void)
 {
-	t_list*	head;
-	t_list*	tmp;
+	t_list	*head;
+	t_list	*tmp;
 
 	head = NULL;
 	ft_list_push_front(&head, "first");

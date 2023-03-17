@@ -6,7 +6,7 @@
 /*   By: tnishina <tnishina@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:07:17 by tnishina          #+#    #+#             */
-/*   Updated: 2023/03/17 23:39:16 by tnishina         ###   ########.fr       */
+/*   Updated: 2023/03/18 00:48:37 by tnishina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_list
 	void			*data;
 	struct s_list	*next;
 }	t_list;
-
 
 /* mandatory part */
 
