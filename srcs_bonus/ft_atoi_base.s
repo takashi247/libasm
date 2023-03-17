@@ -28,10 +28,10 @@ _ft_atoi_base:
   mov r10, rdi; copy rdi to r10
   xor rdi, rdi; reset rdi to use this register for ft_isspace
 
-.loop_sign:
+.loop_sp_sign:
   mov dil, BYTE [r10 + rdx]
   cmp dil, 0
-  je  .no_sign
+  je  .no_sp_sign
   cmp dil, 0x2b; '+'
   je  .invalid
   cmp dil, 0x2d; '-'
@@ -40,9 +40,9 @@ _ft_atoi_base:
   cmp rax, 1
   je  .invalid
   inc rdx
-  jmp .loop_sign
+  jmp .loop_sp_sign
 
-.no_sign:
+.no_sp_sign:
   ; check if base contains the same character more than once
   mov rdi, r10; restore rdi from r10
   xor rsi, rsi
@@ -79,11 +79,11 @@ _ft_atoi_base:
   mov dil, BYTE [r8 + rdx]
   call _ft_isspace
   cmp rax, 1
-  jne .check_sign
+  jne .loop_sign
   inc rdx
   jmp .loop_space
 
-.check_sign:
+.loop_sign:
   cmp dil, 0x2b; '+'
   je  .has_plus
   cmp dil, 0x2d; '-'
@@ -92,12 +92,14 @@ _ft_atoi_base:
 
 .has_plus:
   inc rdx
-  jmp .compute_value
+  mov dil, BYTE [r8 + rdx]
+  jmp .loop_sign
 
 .has_minus:
-  mov rcx, -1
+  imul rcx, -1
   inc rdx
-  jmp .compute_value
+  mov dil, BYTE [r8 + rdx]
+  jmp .loop_sign
 
 .compute_value:
   xor rdi, rdi
