@@ -6,7 +6,7 @@
 /*   By: tnishina <tnishina@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:07:17 by tnishina          #+#    #+#             */
-/*   Updated: 2023/03/18 00:48:37 by tnishina         ###   ########.fr       */
+/*   Updated: 2023/03/18 09:35:09 by tnishina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,13 @@ int		ft_strchr_index(const char *s, int c);
 int		ft_isspace(int c);
 t_list	*ft_create_elem(void *data);
 void	ft_list_push_front(t_list **begin_list, void *data);
+int		ft_list_size(t_list *begin_list);
 
 /* test functions */
 
 void	run_strchr_tests(void);
 void	run_atoi_base_tests(void);
 void	run_list_push_front_tests(void);
+void	run_list_size_tests(void);
 
 #endif

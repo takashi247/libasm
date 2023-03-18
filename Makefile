@@ -39,7 +39,8 @@ SRCS_BONUS	:= ft_atoi_base.s \
 							ft_strlen.s \
 							ft_isspace.s \
 							ft_create_elem.s \
-							ft_list_push_front.s
+							ft_list_push_front.s \
+							ft_list_size.s
 
 SRCS_TEST	:= main.c \
 						test_strlen.c \
@@ -47,12 +48,13 @@ SRCS_TEST	:= main.c \
 						test_strcmp.c \
 						test_write.c \
 						test_read.c \
-						test_strdup.c \
+						test_strdup.c
 
 SRCS_TEST_BONUS	:= main_bonus.c \
 									test_atoi_base_bonus.c \
 									test_strchr_bonus.c \
-									test_list_push_front_bonus.c
+									test_list_push_front_bonus.c \
+									test_list_size_bonus.c
 
 OBJS		:= $(addprefix $(OBJSDIR), $(SRCS:.s=.o))
 
