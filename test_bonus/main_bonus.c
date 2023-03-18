@@ -6,7 +6,7 @@
 /*   By: tnishina <tnishina@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:38:56 by tnishina          #+#    #+#             */
-/*   Updated: 2023/03/18 14:12:41 by tnishina         ###   ########.fr       */
+/*   Updated: 2023/03/18 18:40:17 by tnishina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int
 	run_list_push_front_tests();
 	run_list_size_tests();
 	run_list_sort_tests();
+	run_list_remove_if_tests();
 	return (0);
 }
 
